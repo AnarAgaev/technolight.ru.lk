@@ -1,9 +1,5 @@
-# technolight-ru-lk
-# React + TypeScript + Vite + Chakra UI
-Layout for user account on Chakra UI and React js
+# React + TypeScript + Vite
 
-
-# By vite
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
@@ -75,4 +71,3 @@ export default defineConfig([
   },
 ])
 ```
-
