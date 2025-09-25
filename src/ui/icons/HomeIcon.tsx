@@ -1,5 +1,9 @@
 import { createIcon } from "@chakra-ui/react"
 
+// Using this icon as
+// import { HomeIcon } from "@/ui"
+// <HomeIcon size="sm" viewBox="0 0 16 16" />
+
 const HomeIcon = createIcon({
 	displayName: "HomeIcon",
 	path: (

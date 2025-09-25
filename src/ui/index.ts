@@ -1,2 +1,4 @@
 export * from './Layout'
-export * from './FooterNavigation'
+
+// *** Icons
+export * from './icons/HomeIcon'
