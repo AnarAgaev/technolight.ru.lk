@@ -25,38 +25,36 @@ const navLinkIconStyles = {
 	color: "black"
 }
 
-const FooterNavigation = () => {
+export const FooterNavigation = () => {
 	return (
 		<Grid templateColumns="repeat(4, 1fr)" h="100%" px="4">
 			<GridItem {...navLinkItemStyles}>
 				<Icon {...navLinkIconStyles}>
-					<House/>
+					<House />
 				</Icon>
 				<Text {...navLinkTextStyles}>Главная</Text>
 			</GridItem>
 
 			<GridItem {...navLinkItemStyles}>
 				<Icon {...navLinkIconStyles}>
-					<File/>
+					<File />
 				</Icon>
 				<Text {...navLinkTextStyles}>Заказы</Text>
 			</GridItem>
 
 			<GridItem {...navLinkItemStyles}>
 				<Icon {...navLinkIconStyles}>
-					<Bell/>
+					<Bell />
 				</Icon>
 				<Text {...navLinkTextStyles}>Сообщения</Text>
 			</GridItem>
 
 			<GridItem {...navLinkItemStyles}>
 				<Icon {...navLinkIconStyles}>
-					<Settings/>
+					<Settings />
 				</Icon>
 				<Text {...navLinkTextStyles}>Профиль</Text>
 			</GridItem>
 		</Grid>
 	)
 }
-
-export { FooterNavigation }

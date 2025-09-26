@@ -27,6 +27,4 @@ const config = defineConfig({
 	},
 })
 
-const themeConfig = createSystem(defaultConfig, config)
-
-export default themeConfig
+export const themeConfig = createSystem(defaultConfig, config)

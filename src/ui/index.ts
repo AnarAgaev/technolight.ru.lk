@@ -1,4 +1,3 @@
 export * from './Layout'
-
-// *** Icons
-export * from './icons/HomeIcon'
+export * from './icons/LogoIcon'
+export * from './icons/LogoText'

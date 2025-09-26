@@ -1,5 +1,5 @@
 import { Grid, GridItem, Box } from '@chakra-ui/react'
-import { FooterNavigation } from '@/components'
+import { Sidebar, FooterNavigation } from '@/components'
 
 interface Props {
 	children: React.ReactNode
@@ -12,20 +12,22 @@ const Layout = ({ children }: Props) => (
 		minH="100vh"
 		position="relative"
 	>
-
 		{/* Sidebar */}
 		<GridItem
-			bg="gray.100"
 			position={{ base: "fixed", md: "relative" }}
 			top={{ base: 0, md: "auto" }}
 			left={{ base: 0, md: "auto" }}
 			w={{ base: "100%", md: "auto" }}
 			h={{ base: "36px", md: "auto" }}
 			zIndex={10}
+			bg="white"
+			boxShadow={{
+				base: "none",
+				md: "0 0 1px 0 rgba(24, 24, 27, 0.30), 0 4px 8px 0 rgba(24, 24, 27, 0.10)"
+			}}
 		>
-			Sidebar
+			<Sidebar />
 		</GridItem>
-
 
 		{/* Content */}
 		<GridItem
@@ -36,7 +38,6 @@ const Layout = ({ children }: Props) => (
 		>
 			{ children }
 		</GridItem>
-
 
 		{/* Footer Navigation */}
 		<GridItem
@@ -53,7 +54,6 @@ const Layout = ({ children }: Props) => (
 		>
 			<FooterNavigation />
 		</GridItem>
-
 	</Grid>
 )
 
