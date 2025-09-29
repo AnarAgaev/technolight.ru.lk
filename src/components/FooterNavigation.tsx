@@ -1,4 +1,5 @@
-import {  Grid, GridItem, Text, Icon } from "@chakra-ui/react"
+import { NavLink, Link } from "react-router"
+import { Grid, GridItem, Text, Icon } from "@chakra-ui/react"
 import { House, File, Bell, Settings } from "lucide-react"
 
 const navLinkTextStyles = {
@@ -25,36 +26,50 @@ const navLinkIconStyles = {
 	color: "black"
 }
 
+const pages = [
+	{ label: "Главная", value: "", icon: House },
+	{ label: "Заказы", value: "orders", icon: File },
+	{ label: "Сообщения", value: "messages", icon: Bell },
+	{ label: "Профиль", value: "profile", icon: Settings },
+]
+
 export const FooterNavigation = () => {
 	return (
 		<Grid templateColumns="repeat(4, 1fr)" h="100%" px="4">
-			<GridItem {...navLinkItemStyles}>
-				<Icon {...navLinkIconStyles}>
-					<House />
-				</Icon>
-				<Text {...navLinkTextStyles}>Главная</Text>
-			</GridItem>
+			{pages.map((page) =>
 
-			<GridItem {...navLinkItemStyles}>
-				<Icon {...navLinkIconStyles}>
-					<File />
-				</Icon>
-				<Text {...navLinkTextStyles}>Заказы</Text>
-			</GridItem>
-
-			<GridItem {...navLinkItemStyles}>
-				<Icon {...navLinkIconStyles}>
-					<Bell />
-				</Icon>
-				<Text {...navLinkTextStyles}>Сообщения</Text>
-			</GridItem>
-
-			<GridItem {...navLinkItemStyles}>
-				<Icon {...navLinkIconStyles}>
-					<Settings />
-				</Icon>
-				<Text {...navLinkTextStyles}>Профиль</Text>
-			</GridItem>
+				// ! Валидность URL адреса проверяем просто через наличие точки,
+				// ! так как каждый URL содержит точку, а роут нет
+				page.value.includes(".") ? (
+					<Link
+						key={page.value}
+						to={page.value}
+						target="_blank"
+						rel="noopener noreferrer"
+						style={{ textDecoration: "none" }}
+					>
+						<GridItem {...navLinkItemStyles}>
+							<Icon as={page.icon} {...navLinkIconStyles} />
+							<Text {...navLinkTextStyles}>{page.label}</Text>
+						</GridItem>
+					</Link>
+				) : (
+					<NavLink
+						key={page.value}
+						to={`/${page.value}`}
+						style={{ textDecoration: "none", width: "100%" }}
+					>
+						{({ isActive }) => (
+							<GridItem {...navLinkItemStyles} bg={isActive ? "gray.100" : "transparent"} >
+								<Icon as={page.icon} {...navLinkIconStyles} />
+								<Text {...navLinkTextStyles} >
+									{page.label}
+								</Text>
+							</GridItem>
+						)}
+					</NavLink>
+				)
+			)}
 		</Grid>
 	)
 }

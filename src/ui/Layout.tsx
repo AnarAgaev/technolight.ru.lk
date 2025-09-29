@@ -1,11 +1,8 @@
 import { Grid, GridItem, Box, Container } from '@chakra-ui/react'
 import { Sidebar, FooterNavigation } from '@/components'
+import { Outlet } from 'react-router'
 
-interface Props {
-	children: React.ReactNode
-}
-
-export const Layout = ({ children }: Props) => (
+export const Layout = () => (
 	<Grid
 		templateColumns={{ base: "1fr", md: "70px 1fr", xl: "360px 1fr" }}
 		minH="100vh"
@@ -36,7 +33,7 @@ export const Layout = ({ children }: Props) => (
 			overflowY="auto"
 		>
 			<Container as="section">
-				{ children }
+				<Outlet />
 			</Container>
 		</GridItem>
 
