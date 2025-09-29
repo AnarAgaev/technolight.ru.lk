@@ -1,3 +1,5 @@
 export * from './Layout'
+export * from './ContentLayout'
 export * from './icons/LogoIcon'
 export * from './icons/LogoText'
+export * from './PageHeading'
