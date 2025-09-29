@@ -1,14 +1,13 @@
-import { Grid, GridItem, Box } from '@chakra-ui/react'
+import { Grid, GridItem, Box, Container } from '@chakra-ui/react'
 import { Sidebar, FooterNavigation } from '@/components'
 
 interface Props {
 	children: React.ReactNode
 }
 
-const Layout = ({ children }: Props) => (
+export const Layout = ({ children }: Props) => (
 	<Grid
 		templateColumns={{ base: "1fr", md: "70px 1fr", xl: "360px 1fr" }}
-		gap={{ base: 0, md: 5 }}
 		minH="100vh"
 		position="relative"
 	>
@@ -36,7 +35,9 @@ const Layout = ({ children }: Props) => (
 			pb={{ base: "46px", md: 0 }} // отступ, чтобы контент не залез под фиксированный footer
 			overflowY="auto"
 		>
-			{ children }
+			<Container as="section">
+				{ children }
+			</Container>
 		</GridItem>
 
 		{/* Footer Navigation */}
@@ -56,5 +57,3 @@ const Layout = ({ children }: Props) => (
 		</GridItem>
 	</Grid>
 )
-
-export { Layout }
