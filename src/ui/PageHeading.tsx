@@ -6,7 +6,11 @@ interface Props {
 
 export const PageHeading = ({ children }: Props) => {
 	return (
-		<Heading fontWeight="normal" fontSize="2xl" lineHeight="32px">
+		<Heading
+			fontWeight="normal"
+			fontSize={{base: "xl", md: "2xl"}}
+			lineHeight="1.2"
+		>
 			{ children }
 		</Heading>
 	)
