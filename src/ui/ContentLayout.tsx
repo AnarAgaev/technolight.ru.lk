@@ -17,7 +17,8 @@ export const ContentLayout = ({ children }: Props) => {
 			justify="start"
 			gap="6"
 			h="100%"
-			py="5"
+			pt="5"
+			pb={{base: "5", md: "10"}}
 			minH={{md: "100vh"}}
 		>
 			<Box flexShrink="0">

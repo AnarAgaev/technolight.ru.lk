@@ -1,6 +1,7 @@
 import { PageHeading, ContentLayout } from "@/ui"
-import { Box, Flex, IconButton, Icon, Heading, VStack, Field, Input, PinInput, InputGroup, Checkbox, Button } from "@chakra-ui/react"
 import { ChevronLeft, User, MapPin } from 'lucide-react'
+import { Box, Flex, IconButton, Icon, Heading, VStack,
+	Field, Input, PinInput, InputGroup, Checkbox, Button } from "@chakra-ui/react"
 
 const boxStyles = {
 	borderRadius: "sm",
@@ -106,7 +107,7 @@ export const Profile = () => {
 								<Checkbox.Control />
 								<Checkbox.Label {...checkLabelStyle}>Отображать РРЦ и распродажи</Checkbox.Label>
 							</Checkbox.Root>
-							<Checkbox.Root>
+							<Checkbox.Root checked>
 								<Checkbox.HiddenInput />
 								<Checkbox.Control />
 								<Checkbox.Label {...checkLabelStyle}>Отображать оптовую цену</Checkbox.Label>

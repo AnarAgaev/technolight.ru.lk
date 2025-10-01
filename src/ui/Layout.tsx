@@ -10,8 +10,8 @@ export const Layout = () => (
 	>
 		{/* Sidebar */}
 		<GridItem
-			position={{ base: "fixed", md: "relative" }}
-			top={{ base: 0, md: "auto" }}
+			position={{ base: "fixed", md: "sticky" }}
+			top={{ base: 0 }}
 			left={{ base: 0, md: "auto" }}
 			w={{ base: "100%", md: "auto" }}
 			h={{ base: "36px", md: "auto" }}
