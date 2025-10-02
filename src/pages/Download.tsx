@@ -4,6 +4,7 @@ import { Box as BoxIcon, Cone, Award, Sofa, Tv, Wrench, Video, FilePlay, FileWar
 
 const selectors = [
 	{
+		id: 1,
 		label: 'Бренд',
 		options: [
 			{ label: "Artelamp", value: "artelamp" },
@@ -12,6 +13,7 @@ const selectors = [
 		]
 	},
 	{
+		id: 2,
 		label: 'Коллекция',
 		options: [
 			{ label: "Saturn", value: "saturn" },
@@ -21,6 +23,7 @@ const selectors = [
 		]
 	},
 	{
+		id: 3,
 		label: 'Артикул',
 		options: [
 			{ label: "AFF0375", value: "AFF0375" },
@@ -32,15 +35,15 @@ const selectors = [
 ]
 
 const selectCardsList = [
-	{ title: "3D модели", icon: BoxIcon, selected: false },
-	{ title: "Фотометрические данные", icon: Cone, selected: false },
-	{ title: "Сертификаты", icon: Award, selected: false },
-	{ title: "Интерьеры", icon: Sofa, selected: false },
-	{ title: "Презентационные материалы", icon: Tv, selected: false },
-	{ title: "Инструкции по сборке", icon: Wrench, selected: false },
-	{ title: "Видео о товаре", icon: Video, selected: true },
-	{ title: "Видеоинструкции", icon: FilePlay, selected: false },
-	{ title: "Руководство по эксплуатации", icon: FileWarning, selected: false },
+	{ id: 1, title: "3D модели", icon: BoxIcon, selected: false },
+	{ id: 2, title: "Фотометрические данные", icon: Cone, selected: false },
+	{ id: 3, title: "Сертификаты", icon: Award, selected: false },
+	{ id: 4, title: "Интерьеры", icon: Sofa, selected: false },
+	{ id: 5, title: "Презентационные материалы", icon: Tv, selected: false },
+	{ id: 6, title: "Инструкции по сборке", icon: Wrench, selected: false },
+	{ id: 7, title: "Видео о товаре", icon: Video, selected: true },
+	{ id: 8, title: "Видеоинструкции", icon: FilePlay, selected: false },
+	{ id: 9, title: "Руководство по эксплуатации", icon: FileWarning, selected: false },
 ]
 
 const videoInstructionsList = [
@@ -76,7 +79,7 @@ export const Download = () => {
 						templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
 					>
 						{selectors.map(selector => (
-							<GridItem>
+							<GridItem key={selector.id}>
 								<CustomMultipleSelect
 									label={selector.label}
 									optionsList={selector.options}
@@ -90,7 +93,7 @@ export const Download = () => {
 					templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
 				>
 					{selectCardsList.map(card => (
-						<GridItem>
+						<GridItem key={card.id}>
 							<Card.Root
 								{...cardStyle}
 								background={card.selected ? 'gray.100' : 'transparent'}
@@ -118,7 +121,7 @@ export const Download = () => {
 							<ScrollArea.Content pb="4">
 								<Flex gap="4" flexWrap="nowrap">
 									{videoInstructionsList.map(instruction => (
-										<Card.Root w="308px" h="auto" borderRadius="1.5" overflow="hidden">
+										<Card.Root key={instruction.views} w="308px" h="auto" borderRadius="1.5" overflow="hidden">
 											<Card.Body p='0'>
 												<Card.Title
 													w='full'
@@ -145,7 +148,7 @@ export const Download = () => {
 							<ScrollArea.Content pb="4">
 								<Flex gap="5" flexWrap="nowrap">
 									{videoInstructionsList.map(instruction => (
-										<Card.Root w="216px" h="auto" border="none">
+										<Card.Root key={instruction.views} w="216px" h="auto" border="none">
 											<Card.Body p='0' gap='2.5'>
 												<Card.Title
 													w='full'
@@ -157,7 +160,7 @@ export const Download = () => {
 													backgroundPosition="center"
 													overflow='hidden'
 													borderRadius='6px' />
-												<Card.Description>
+												<Card.Description as="div">
 													<VStack gap='4.5' align='stretch'>
 														<Text
 															color="black"
