@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-import { Home, Projects, Orders, Download, Companies, Profile, Messages } from '@/pages'
 import { Layout } from "./ui";
+import { Home, Projects, Orders, Download,
+	Companies, Profile, Messages, Contacts } from '@/pages'
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 					<Route path="download" element={<Download />} />
 					<Route path="companies" element={<Companies />} />
 					<Route path="messages" element={<Messages />} />
+					<Route path="contacts" element={<Contacts />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
