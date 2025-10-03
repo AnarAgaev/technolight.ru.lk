@@ -1,6 +1,6 @@
 import { ContentLayout, PageHeading, CustomMultipleSelect } from "@/ui"
-import { Avatar, Card, Flex, Grid, GridItem, Heading, Icon, ScrollArea, VStack, Text, Link, Image } from "@chakra-ui/react"
-import { Box as BoxIcon, Cone, Award, Sofa, Tv, Wrench, Video, FilePlay, FileWarning, Eye } from "lucide-react"
+import { Avatar, Card, Flex, Grid, GridItem, Heading, Icon, ScrollArea, VStack, Text, Link, Image, HStack } from "@chakra-ui/react"
+import { Box as BoxIcon, Cone, Award, Sofa, Tv, Wrench, Video, FilePlay, FileWarning, Eye, Download as DownloadIcon } from "lucide-react"
 
 const selectors = [
 	{
@@ -64,7 +64,7 @@ const cardStyle = {
 	boxShadow: "0 0 1px 0 rgba(24, 24, 27, 0.30), 0 4px 8px 0 rgba(24, 24, 27, 0.10)"
 }
 
-const catalogs = [
+const catalogsList = [
 	{
 		id: 1,
 		label: 'Каталог TECHNOLIGHT 2025',
@@ -123,7 +123,63 @@ const catalogs = [
 	},
 ]
 
-
+const filesList = [
+	{
+		id: 1,
+		label: "Инструкция по монтажу трека для натяжного потолка LOCK",
+		data: "pdf - 288.2 KB",
+	},
+	{
+		id: 2,
+		label: "Инструкция по монтажу трековой системы",
+		data: "pdf - 714.78 KB",
+	},
+	{
+		id: 3,
+		label: "Инструкция по подключению светильников 1-10 В+",
+		data: "pdf - 382.66 KB",
+	},
+	{
+		id: 4,
+		label: "Инструкция по установке блока питания в трек 48В",
+		data: "pdf - 160.1 KB",
+	},
+	{
+		id: 5,
+		label: "Монтаж встраиваемого трека",
+		data: "pdf - 1.26 MB",
+	},
+	{
+		id: 6,
+		label: "Монтаж встраиваемого трека NEW",
+		data: "pdf - 2.4 MB",
+	},
+	{
+		id: 7,
+		label: "Монтаж накладного подвесного трека",
+		data: "pdf - 2.99 MB",
+	},
+	{
+		id: 8,
+		label: "Монтаж накладного подвесного трека мини",
+		data: "pdf - 2.97 MB",
+	},
+	{
+		id: 9,
+		label: "Монтаж трека для натяжного потолка",
+		data: "pdf - 2.54 MB",
+	},
+	{
+		id: 10,
+		label: "Способы диммирования трековой системы PROFI 48",
+		data: "pdf - 97.04 KB",
+	},
+	{
+		id: 11,
+		label: "Установка светильников в трек",
+		data: "pdf - 736.17 KB",
+	},
+]
 
 export const Download = () => {
 	return (
@@ -271,7 +327,7 @@ export const Download = () => {
 					<GridItem gridColumnStart={1} gridColumnEnd={-1}>
 						<Heading size="sm">Каталоги</Heading>
 					</GridItem>
-					{catalogs.map(catalog => (
+					{catalogsList.map(catalog => (
 						<GridItem key={catalog.id} overflow="hidden" border="1px solid" borderColor="gray.200" borderRadius="6px">
 							<Link
 								href="#"
@@ -293,7 +349,7 @@ export const Download = () => {
 									loading="lazy"
 								/>
 							</Link>
-							<VStack align="stretch" gap={{ base: '1', md: '2' }} p="3">
+							<VStack align="stretch" gap={{ base: '1', md: '2' }} p="3" pb="4">
 								<Text
 									display="-webkit-box"
 									overflow="hidden"
@@ -303,14 +359,46 @@ export const Download = () => {
 										WebkitBoxOrient: "vertical",
 									}}
 								>{catalog.label}</Text>
-								<Text as="span" fontSize="14px" color="gray.500" fontWeight="light">
+								<Text as="span" fontSize="14px" color="gray.500" fontWeight="light" mt="-2">
 									{catalog.title}
 								</Text>
-								<Link href="#" fontSize="14px" fontWeight="light">{catalog.type} - {catalog.size}</Link>
+								<Link href="#" fontSize="14px" fontWeight="light" color="gray.700">{catalog.type} - {catalog.size}</Link>
 							</VStack>
 						</GridItem>
 					))}
 				</Grid>
+
+				{/* Файлы для скачивания */}
+				<VStack align="stretch" gap="0">
+					<Heading size="sm" mb="5">Файлы для скачивания</Heading>
+					{filesList.map((file, index) => (
+						<HStack key={file.id} align={{ base: "flex-start", md: "center" }} px="4" py="3" borderRadius="6px" bg={index % 2 === 0 ? "gray.100" : 'transparent'}>
+							<Flex direction={{ base: "column", md: "row" }} align={{md: "center"}} justify="space-between" gap={{ base: "1", md: "4" }} w="full">
+								<Link href="#" fontSize="14px" download>{file.label}</Link>
+								<Text flexShrink={0} as="span" fontSize="14px" color="gray.500" fontWeight="light">{file.data}</Text>
+							</Flex>
+							<Flex align="center" justify="flex-end" minW={{ base: "10%", lg: "20%" }} flexShrink={0}>
+								<Link
+									display="flex"
+									alignItems="center"
+									justifyContent="center"
+									href="#"
+									w="35px"
+									h="35px"
+									background="black"
+									borderRadius="4px"
+									_hover={{
+										bg: "gray.200",
+										"& svg": { color: "black" },
+									}}
+									download
+								>
+									<Icon as={DownloadIcon} color="white" w="20px" />
+								</Link>
+							</Flex>
+						</HStack>
+					))}
+				</VStack>
 			</VStack>
 		</ContentLayout>
 	)
