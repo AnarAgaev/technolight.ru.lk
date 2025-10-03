@@ -1,7 +1,8 @@
 import { PageHeading, ContentLayout } from "@/ui"
 import { ChevronLeft, User, MapPin } from 'lucide-react'
-import { Box, Flex, IconButton, Icon, Heading, VStack,
-	Field, Input, PinInput, InputGroup, Checkbox, Button } from "@chakra-ui/react"
+import { NavLink } from "react-router"
+import { Box, Flex, Icon, Heading, VStack, Field, Input,
+	PinInput, InputGroup, Checkbox, Button } from "@chakra-ui/react"
 
 const boxStyles = {
 	borderRadius: "sm",
@@ -36,16 +37,9 @@ export const Profile = () => {
 		<ContentLayout>
 			<Flex direction={{ base: "column", md: "row" }} gap="4" justify="space-between">
 				<Flex align="center" gap="2">
-					<IconButton
-						aria-label="Назад"
-						variant="ghost"
-						borderRadius="2px"
-						minW="initial"
-						boxSize={{ base: "20px", md: "24px" }}
-						_hover={{ bg: "gray.100" }}
-					>
-						<Icon as={ChevronLeft} boxSize={{ base: "20px", md: "24px" }} />
-					</IconButton>
+					<NavLink to="/">
+						<Icon as={ChevronLeft} boxSize={6} color="black" _hover={{ color: "gray.400" }} />
+					</NavLink>
 					<PageHeading>Профиль и настройки</PageHeading>
 				</Flex>
 			</Flex>

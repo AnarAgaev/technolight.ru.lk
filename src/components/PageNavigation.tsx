@@ -1,6 +1,6 @@
 import { NavLink, Link } from "react-router"
 import { VStack, Flex, Text, Icon } from "@chakra-ui/react"
-import { House, Folder, File, AppWindowMac, Settings, Download, Users } from "lucide-react"
+import { House, Folder, File, AppWindowMac, Settings, Download, Users, SquareUser } from "lucide-react"
 
 const pages = [
 	{ label: "Главная", value: "", icon: House },
@@ -10,6 +10,7 @@ const pages = [
 	{ label: "Профиль и настройки", value: "profile", icon: Settings },
 	{ label: "Скачать", value: "download", icon: Download },
 	{ label: "Юр.лица", value: "companies", icon: Users },
+	{ label: "Контакты", value: "contacts", icon: SquareUser },
 ]
 
 export const PageNavigation = () => {
