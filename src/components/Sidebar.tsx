@@ -9,7 +9,7 @@ export const Sidebar = () => {
 	const present = useBreakpointValue({ base: open, md: true })
 
 	return (
-		<Flex direction="column" gap="3" px={{base: 0, xl: 5}} py={{base: 2, md: 5}} bgColor="white">
+		<Flex position={"sticky"} top="0" direction="column" gap="3" px={{base: 0, xl: 5}} py={{base: 2, md: 5}} bgColor="white">
 			<Flex
 				alignItems="center"
 				justifyContent={{ base: "space-between", md: "center", xl: "flex-start" }}

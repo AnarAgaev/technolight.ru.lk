@@ -1,5 +1,5 @@
 import { ContentLayout, PageHeading, CustomMultipleSelect } from "@/ui"
-import { Avatar, Card, Flex, Grid, GridItem, Heading, Icon, ScrollArea, VStack, Text } from "@chakra-ui/react"
+import { Avatar, Card, Flex, Grid, GridItem, Heading, Icon, ScrollArea, VStack, Text, Link, Image } from "@chakra-ui/react"
 import { Box as BoxIcon, Cone, Award, Sofa, Tv, Wrench, Video, FilePlay, FileWarning, Eye } from "lucide-react"
 
 const selectors = [
@@ -63,6 +63,67 @@ const cardStyle = {
 	borderRadius: "6px",
 	boxShadow: "0 0 1px 0 rgba(24, 24, 27, 0.30), 0 4px 8px 0 rgba(24, 24, 27, 0.10)"
 }
+
+const catalogs = [
+	{
+		id: 1,
+		label: 'Каталог TECHNOLIGHT 2025',
+		title: 'Каталог',
+		type: 'pdf',
+		size: '34.83 MB',
+		image: 'https://storage.yandexcloud.net/s3files/previews/2025/01JQEJ926274DB68T4CQ7X1BVT.jpg'
+	},
+	{
+		id: 2,
+		label: 'Брошюра ICONIC',
+		title: 'Каталог',
+		type: 'pdf',
+		size: '9.5 MB',
+		image: 'https://storage.yandexcloud.net/s3files/previews/2024/01J7ZGJ60VD9YSWD6ACTS1FCMA.jpg'
+	},
+	{
+		id: 3,
+		label: 'Брошюра HALO',
+		title: 'Каталог',
+		type: 'pdf',
+		size: '6.67 MB',
+		image: 'https://storage.yandexcloud.net/s3files/previews/2024/01J7ZGNZ6GTN6384R2ZJEFDXRT.jpg'
+	},
+	{
+		id: 4,
+		label: 'БРОШЮРА APEX48V',
+		title: 'Каталог',
+		type: 'pdf',
+		size: '1.2 MB',
+		image: 'https://storage.yandexcloud.net/s3files/previews/2024/01JBH2G8E7PX3KHP22NGVG0YF2.jpg'
+	},
+	{
+		id: 5,
+		label: 'БРОШЮРА PRISM',
+		title: 'Каталог',
+		type: 'pdf',
+		size: '2.7 MB',
+		image: 'https://storage.yandexcloud.net/s3files/previews/2025/01JQ4A5PBG326R13GQ1JZ56RE2.jpg'
+	},
+	{
+		id: 6,
+		label: 'БРОШЮРА ЗЕРО ЛОК',
+		title: 'Каталог',
+		type: 'pdf',
+		size: '1.86 MB',
+		image: 'https://storage.yandexcloud.net/s3files/previews/2025/01JVCGYFAF52K8GWPT4RYWMVSM.jpg'
+	},
+	{
+		id: 7,
+		label: 'TECHNOLIGHT НОВИНКИ 2025',
+		title: 'Каталог',
+		type: 'pdf',
+		size: '6.49 MB',
+		image: 'https://storage.yandexcloud.net/s3files/previews/2025/01K30NMZF5BFCAKJCCA6KXV11F.jpg'
+	},
+]
+
+
 
 export const Download = () => {
 	return (
@@ -196,6 +257,60 @@ export const Download = () => {
 					</ScrollArea.Root>
 
 				</VStack>
+
+				{/* Каталоги */}
+				<Grid
+					gap={{ base: '3', md: '6' }}
+					templateColumns={{
+						base: "1fr",
+						sm: "repeat(2, 1fr)",
+						md: "repeat(3, 1fr)",
+						lg: "repeat(4, 1fr)"
+					}}
+				>
+					<GridItem gridColumnStart={1} gridColumnEnd={-1}>
+						<Heading size="sm">Каталоги</Heading>
+					</GridItem>
+					{catalogs.map(catalog => (
+						<GridItem key={catalog.id} overflow="hidden" border="1px solid" borderColor="gray.200" borderRadius="6px">
+							<Link
+								href="#"
+								display="flex"
+								alignItems="stretch"
+								justifyContent="flex-end"
+								position="relative"
+								w="full"
+								h="auto"
+								aspectRatio="4/2.5"
+								borderBottom="1px solid"
+								borderColor="gray.200"
+								download
+							>
+								<Image
+									src={catalog.image}
+									alt="Подсказка для картинки"
+									display="block"
+									loading="lazy"
+								/>
+							</Link>
+							<VStack align="stretch" gap={{ base: '1', md: '2' }} p="3">
+								<Text
+									display="-webkit-box"
+									overflow="hidden"
+									textOverflow="ellipsis"
+									style={{
+										WebkitLineClamp: "2",
+										WebkitBoxOrient: "vertical",
+									}}
+								>{catalog.label}</Text>
+								<Text as="span" fontSize="14px" color="gray.500" fontWeight="light">
+									{catalog.title}
+								</Text>
+								<Link href="#" fontSize="14px" fontWeight="light">{catalog.type} - {catalog.size}</Link>
+							</VStack>
+						</GridItem>
+					))}
+				</Grid>
 			</VStack>
 		</ContentLayout>
 	)
