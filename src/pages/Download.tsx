@@ -1,4 +1,4 @@
-import { ContentLayout, PageHeading, CustomMultipleSelect } from "@/ui"
+import { ContentLayout, PageHeading, CustomSelect } from "@/ui"
 import { Avatar, Card, Flex, Grid, GridItem, Heading, Icon, ScrollArea, VStack, Text, Link, Image, HStack } from "@chakra-ui/react"
 import { Box as BoxIcon, Cone, Award, Sofa, Tv, Wrench, Video, FilePlay, FileWarning, Eye, Download as DownloadIcon } from "lucide-react"
 
@@ -197,9 +197,10 @@ export const Download = () => {
 					>
 						{selectors.map(selector => (
 							<GridItem key={selector.id}>
-								<CustomMultipleSelect
+								<CustomSelect
 									label={selector.label}
 									optionsList={selector.options}
+									isMultiple
 								/>
 							</GridItem>
 						))}
@@ -377,7 +378,7 @@ export const Download = () => {
 								<Link href="#" fontSize="14px" download>{file.label}</Link>
 								<Text flexShrink={0} as="span" fontSize="14px" color="gray.500" fontWeight="light">{file.data}</Text>
 							</Flex>
-							<Flex align="center" justify="flex-end" minW={{ base: "10%", lg: "20%" }} flexShrink={0}>
+							<Flex align="center" justify="flex-end" minW={{ base: "10%", lg: "20%", xl: "30%" }} flexShrink={0}>
 								<Link
 									display="flex"
 									alignItems="center"

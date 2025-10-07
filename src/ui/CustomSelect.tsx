@@ -1,22 +1,24 @@
-import { createListCollection, Portal, Select } from "@chakra-ui/react";
+import { createListCollection, Portal, Select, VStack, Text } from "@chakra-ui/react";
 
 type Option = {
 	label: string
-	value: string
+	value: string,
+	info?: string
 }
 
 interface Props {
 	label: string,
-	optionsList: Option[]
+	optionsList: Option[],
+	isMultiple: boolean
 }
 
-export const CustomMultipleSelect = ({label, optionsList}: Props) => {
+export const CustomSelect = ({label, optionsList, isMultiple}: Props) => {
 	const options = createListCollection({
 		items: optionsList,
 	})
 
 	return (
-		<Select.Root multiple collection={options} size="sm" width="full">
+		<Select.Root multiple={isMultiple} collection={options} size="sm" width="full">
 			<Select.HiddenSelect />
 			<Select.Control>
 				<Select.Trigger>
@@ -32,7 +34,10 @@ export const CustomMultipleSelect = ({label, optionsList}: Props) => {
 					<Select.Content>
 						{options.items.map((item) => (
 							<Select.Item item={item} key={item.value}>
-								{item.label}
+								<VStack align="stretch" gap="0">
+									{item.label}
+									{item.info && <Text fontSize="12px" color="gray.500" lineHeight={1.4}>{item.info}</Text>}
+								</VStack>
 								<Select.ItemIndicator />
 							</Select.Item>
 						))}
