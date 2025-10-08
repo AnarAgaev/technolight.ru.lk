@@ -32,7 +32,7 @@ const checkLabelStyle = {
 	fontSize: {base: '12px', lg: '14px'}
 }
 
-export const Profile = () => {
+const Profile = () => {
 	return (
 		<ContentLayout>
 			<Flex direction={{ base: "column", md: "row" }} gap="4" justify="space-between">
@@ -134,3 +134,5 @@ export const Profile = () => {
 		</ContentLayout>
 	)
 }
+
+export default Profile

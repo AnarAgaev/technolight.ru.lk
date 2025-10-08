@@ -4,7 +4,7 @@ import { Badge, Box, Button, Field, Flex, Grid, GridItem, Heading, HStack, Icon,
 import { PageHeading } from "@/ui"
 import { NavLink } from "react-router"
 import { ChevronLeft, Search, Download, Save, Send, Copy, Trash2, PenLine, X, RefreshCcw } from "lucide-react"
-import { formatPrice, getTimeAgo } from '@/helpers'
+import { formatPrice, getTimeAgo, formatDate } from '@/helpers'
 
 const cardStyle = {
 	w: "full",
@@ -168,157 +168,158 @@ const filters = [
 const orders = [
 	{
 		id: 1,
-		requestNumber: 'TL67890987',
-		orderNumber: 'TL67890987',
-		status: { label: 'В обработке', value: 'IN_PROGRESS' },
-		pushDate: '28.08.2025',
-		company: 'ООО Меркурий',
+		requestNumber: "TL67890987",
+		orderNumber: "TL67890987",
+		status: { label: "В обработке", value: "IN_PROGRESS" },
+		pushDate: "2025-08-28",
+		company: "ООО Меркурий",
 		price: 53678,
-		amount: 34
+		amount: 34,
 	},
 	{
 		id: 2,
-		requestNumber: 'TL67890988',
-		orderNumber: 'TL67890988',
-		status: { label: 'Не оформлен', value: 'NEW' },
-		pushDate: '29.08.2025',
+		requestNumber: "TL67890988",
+		orderNumber: "TL67890988",
+		status: { label: "Не оформлен", value: "NEW" },
+		pushDate: "2025-08-29",
 		company: 'ООО "СВЕТ.РУ"',
 		price: 23450,
-		amount: 12
+		amount: 12,
 	},
 	{
 		id: 3,
-		requestNumber: 'TL67890989',
-		orderNumber: 'TL67890989',
-		status: { label: 'В резерве', value: 'RESERVED' },
-		pushDate: '30.08.2025',
+		requestNumber: "TL67890989",
+		orderNumber: "TL67890989",
+		status: { label: "В резерве", value: "RESERVED" },
+		pushDate: "2025-08-30",
 		company: 'ООО "ТОРГ ОПТ"',
 		price: 78900,
-		amount: 45
+		amount: 45,
 	},
 	{
 		id: 4,
-		requestNumber: 'TL67890990',
-		orderNumber: 'TL67890990',
-		status: { label: 'Подтвержден', value: 'CONFIRMED' },
-		pushDate: '01.09.2025',
+		requestNumber: "TL67890990",
+		orderNumber: "TL67890990",
+		status: { label: "Подтвержден", value: "CONFIRMED" },
+		pushDate: "2025-09-01",
 		company: 'ООО "Дом Света"',
 		price: 45670,
-		amount: 23
+		amount: 23,
 	},
 	{
 		id: 5,
-		requestNumber: 'TL67890991',
-		orderNumber: 'TL67890991',
-		status: { label: 'В сборке и доставке', value: 'IN_ASSEMBLY' },
-		pushDate: '02.09.2025',
+		requestNumber: "TL67890991",
+		orderNumber: "TL67890991",
+		status: { label: "В сборке и доставке", value: "IN_ASSEMBLY" },
+		pushDate: "2025-09-02",
 		company: 'ООО "ВАМ СВЕТ"',
 		price: 123400,
-		amount: 67
+		amount: 67,
 	},
 	{
 		id: 6,
-		requestNumber: 'TL67890992',
-		orderNumber: 'TL67890992',
-		status: { label: 'Отгружен', value: 'SHIPPED' },
-		pushDate: '03.09.2025',
+		requestNumber: "TL67890992",
+		orderNumber: "TL67890992",
+		status: { label: "Отгружен", value: "SHIPPED" },
+		pushDate: "2025-09-03",
 		company: 'ООО "РумДекор"',
 		price: 34560,
-		amount: 18
+		amount: 18,
 	},
 	{
 		id: 7,
-		requestNumber: 'TL67890993',
-		orderNumber: 'TL67890993',
-		status: { label: 'Отменен', value: 'CANCELED' },
-		pushDate: '04.09.2025',
+		requestNumber: "TL67890993",
+		orderNumber: "TL67890993",
+		status: { label: "Отменен", value: "CANCELED" },
+		pushDate: "2025-09-04",
 		company: 'ООО "СВЕТ.РУ"',
 		price: 8900,
-		amount: 5
+		amount: 5,
 	},
 	{
 		id: 8,
-		requestNumber: 'TL67890994',
-		orderNumber: 'TL67890994',
-		status: { label: 'В обработке', value: 'IN_PROGRESS' },
-		pushDate: '05.09.2025',
+		requestNumber: "TL67890994",
+		orderNumber: "TL67890994",
+		status: { label: "В обработке", value: "IN_PROGRESS" },
+		pushDate: "2025-09-05",
 		company: 'ООО "ТОРГ ОПТ"',
 		price: 67890,
-		amount: 29
+		amount: 29,
 	},
 	{
 		id: 9,
-		requestNumber: 'TL67890995',
-		orderNumber: 'TL67890995',
-		status: { label: 'Подтвержден', value: 'CONFIRMED' },
-		pushDate: '06.09.2025',
+		requestNumber: "TL67890995",
+		orderNumber: "TL67890995",
+		status: { label: "Подтвержден", value: "CONFIRMED" },
+		pushDate: "2025-09-06",
 		company: 'ООО "Дом Света"',
 		price: 112300,
-		amount: 52
+		amount: 52,
 	},
 	{
 		id: 10,
-		requestNumber: 'TL67890996',
-		orderNumber: 'TL67890996',
-		status: { label: 'В сборке и доставке', value: 'IN_ASSEMBLY' },
-		pushDate: '07.09.2025',
+		requestNumber: "TL67890996",
+		orderNumber: "TL67890996",
+		status: { label: "В сборке и доставке", value: "IN_ASSEMBLY" },
+		pushDate: "2025-09-07",
 		company: 'ООО "ВАМ СВЕТ"',
 		price: 45600,
-		amount: 21
+		amount: 21,
 	},
 	{
 		id: 11,
-		requestNumber: 'TL67890997',
-		orderNumber: 'TL67890997',
-		status: { label: 'Отгружен', value: 'SHIPPED' },
-		pushDate: '08.09.2025',
+		requestNumber: "TL67890997",
+		orderNumber: "TL67890997",
+		status: { label: "Отгружен", value: "SHIPPED" },
+		pushDate: "2025-09-08",
 		company: 'ООО "РумДекор"',
 		price: 78100,
-		amount: 38
+		amount: 38,
 	},
 	{
 		id: 12,
-		requestNumber: 'TL67890998',
-		orderNumber: 'TL67890998',
-		status: { label: 'Не оформлен', value: 'NEW' },
-		pushDate: '09.09.2025',
+		requestNumber: "TL67890998",
+		orderNumber: "TL67890998",
+		status: { label: "Не оформлен", value: "NEW" },
+		pushDate: "2025-09-09",
 		company: 'ООО "СВЕТ.РУ"',
 		price: 23400,
-		amount: 14
+		amount: 14,
 	},
 	{
 		id: 13,
-		requestNumber: 'TL67890999',
-		orderNumber: 'TL67890999',
-		status: { label: 'В резерве', value: 'RESERVED' },
-		pushDate: '10.09.2025',
+		requestNumber: "TL67890999",
+		orderNumber: "TL67890999",
+		status: { label: "В резерве", value: "RESERVED" },
+		pushDate: "2025-09-10",
 		company: 'ООО "ТОРГ ОПТ"',
 		price: 56700,
-		amount: 26
+		amount: 26,
 	},
 	{
 		id: 14,
-		requestNumber: 'TL67891000',
-		orderNumber: 'TL67891000',
-		status: { label: 'Отменен', value: 'CANCELED' },
-		pushDate: '11.09.2025',
+		requestNumber: "TL67891000",
+		orderNumber: "TL67891000",
+		status: { label: "Отменен", value: "CANCELED" },
+		pushDate: "2025-09-11",
 		company: 'ООО "Дом Света"',
 		price: 12800,
-		amount: 8
+		amount: 8,
 	},
 	{
 		id: 15,
-		requestNumber: 'TL67891001',
-		orderNumber: 'TL67891001',
-		status: { label: 'В обработке', value: 'IN_PROGRESS' },
-		pushDate: '12.09.2025',
+		requestNumber: "TL67891001",
+		orderNumber: "TL67891001",
+		status: { label: "В обработке", value: "IN_PROGRESS" },
+		pushDate: "2025-09-12",
 		company: 'ООО "ВАМ СВЕТ"',
 		price: 89300,
-		amount: 41
-	}
+		amount: 41,
+	},
 ]
 
-export const Orders = () => {
+
+const Orders = () => {
 	return (
 		<ContentLayout>
 			{/* Заголовок и кнопка назад */}
@@ -488,7 +489,7 @@ export const Orders = () => {
 				</Table.ScrollArea>
 
 				{/* Список заказов */}
-				<VStack gap="4" align="stretch" {...cardStyle}>
+				<VStack gap="4" align="stretch" {...cardStyle} overflow="hidden">
 					<VStack gap="1.5" align="stretch" p={{ base: '3', md: '4' }} w="full">
 						<Heading fontSize="sm" fontWeight={600} lineHeight="20px">Фильтры</Heading>
 						<Grid gap={{ base: '3', xl: '6' }}
@@ -523,7 +524,7 @@ export const Orders = () => {
 					<Table.ScrollArea>
 						<Table.Root size="sm" borderTopWidth="1px" minW="900px" background="transparent">
 							<Table.Header>
-								<Table.Row>
+								<Table.Row background="transparent">
 									<Table.ColumnHeader pl="4" fontWeight="semibold" bgColor="gray.100">Номер заявки</Table.ColumnHeader>
 									<Table.ColumnHeader fontWeight="semibold" bgColor="gray.100">Номер заказа</Table.ColumnHeader>
 									<Table.ColumnHeader fontWeight="semibold" bgColor="gray.100">Статус заказа</Table.ColumnHeader>
@@ -537,7 +538,7 @@ export const Orders = () => {
 
 							<Table.Body fontSize="sm">
 								{orders.map(order => (
-									<Table.Row key={order.id}>
+									<Table.Row key={order.id} background="transparent">
 										<Table.Cell pl="4">{order.requestNumber}</Table.Cell>
 										<Table.Cell>{order.orderNumber}</Table.Cell>
 										<Table.Cell>
@@ -550,16 +551,21 @@ export const Orders = () => {
 														: order.status.value === 'SHIPPED'
 															? 'green'
 															: 'gray'
-													}
+												}
 											>
 												{order.status.label}
 											</Badge>
 										</Table.Cell>
 										<Table.Cell>
-											<VStack gap="0" align="stretch">
-												<Text>{order.pushDate}</Text>
-												<Text color="gray.600" fontSize="10px">{getTimeAgo(order.pushDate)}</Text>
-											</VStack>
+											{formatDate(order.pushDate)
+												? (
+													<VStack gap="0" align="stretch">
+														<Text>{formatDate(order.pushDate)}</Text>
+														<Text color="gray.600" fontSize="10px">{getTimeAgo(order.pushDate)}</Text>
+													</VStack>
+												)
+												: null
+											}
 										</Table.Cell>
 										<Table.Cell>{order.company}</Table.Cell>
 										<Table.Cell>{formatPrice(order.price)} ₽</Table.Cell>
@@ -601,3 +607,5 @@ export const Orders = () => {
 		</ContentLayout>
 	)
 }
+
+export default Orders

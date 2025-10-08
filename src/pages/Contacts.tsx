@@ -144,3 +144,5 @@ export const Contacts = () => {
 		</ContentLayout>
 	)
 }
+
+export default Contacts

@@ -12,7 +12,7 @@ const items = [
 	{ id: 6, name: "OOO Нептун", inn: 7980000021, contract: 987654321, confirmed: false, active: false },
 ]
 
-export const Companies = () => {
+const Companies = () => {
 	return (
 		<ContentLayout>
 			<Flex direction={{ base: "column", md: "row" }} gap="4" justify="space-between">
@@ -66,3 +66,5 @@ export const Companies = () => {
 		</ContentLayout>
 	)
 }
+
+export default Companies

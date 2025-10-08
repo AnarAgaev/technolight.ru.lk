@@ -4,12 +4,13 @@
  * @returns строка вида "M месяцев D дней назад"
  */
 
-export const getTimeAgo = (dateString: string): string => {
+export const getTimeAgo = (dateString: string): string | null => {
 	const orderDate = new Date(dateString)
 	const currentDate = new Date()
 
 	if (isNaN(orderDate.getTime())) {
 		console.error('Некорректный формат даты. Получено:', dateString)
+		return null
 	}
 
 	// Вычисляем разницу в миллисекундах

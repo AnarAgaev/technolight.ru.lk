@@ -21,7 +21,7 @@ const ordersAndProjects = [
 	{ count: 59, label: 'Отгружены' },
 ];
 
-export const Home = () => {
+const Home = () => {
 	return (
 		<ContentLayout>
 			<Flex direction={{ base: "column", md: "row" }} gap="4" justify="space-between">
@@ -164,3 +164,5 @@ export const Home = () => {
 		</ContentLayout >
 	)
 }
+
+export default Home

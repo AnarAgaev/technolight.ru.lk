@@ -181,7 +181,7 @@ const filesList = [
 	},
 ]
 
-export const Download = () => {
+const Download = () => {
 	return (
 		<ContentLayout>
 			<Flex direction={{ base: "column", md: "row" }} gap="4" justify="space-between">
@@ -404,3 +404,5 @@ export const Download = () => {
 		</ContentLayout>
 	)
 }
+
+export default Download
