@@ -1,53 +1,76 @@
-import { PageHeading, ContentLayout } from "@/ui"
-import { ChevronLeft, User, MapPin } from 'lucide-react'
-import { NavLink } from "react-router"
-import { Box, Flex, Icon, Heading, VStack, Field, Input,
-	PinInput, InputGroup, Checkbox, Button } from "@chakra-ui/react"
+import {
+	Box,
+	Button,
+	Checkbox,
+	Field,
+	Flex,
+	Heading,
+	Icon,
+	Input,
+	InputGroup,
+	PinInput,
+	VStack,
+} from '@chakra-ui/react'
+import {ChevronLeft, MapPin, User} from 'lucide-react'
+import {NavLink} from 'react-router'
+import {ContentLayout, PageHeading} from '@/ui'
 
 const boxStyles = {
-	borderRadius: "sm",
-	w: "full",
-	p: { base: "3", md: "4" },
-	boxShadow: "0 0 1px 0 rgba(24, 24, 27, 0.30), 0 4px 8px 0 rgba(24, 24, 27, 0.10)",
+	borderRadius: 'sm',
+	w: 'full',
+	p: {base: '3', md: '4'},
+	boxShadow:
+		'0 0 1px 0 rgba(24, 24, 27, 0.30), 0 4px 8px 0 rgba(24, 24, 27, 0.10)',
 }
 
 const inputStyle = {
-	overflow: "hidden",
-	textOverflow: "ellipsis",
-	whiteSpace: "nowrap",
-	pl: "34px !important",
+	overflow: 'hidden',
+	textOverflow: 'ellipsis',
+	whiteSpace: 'nowrap',
+	pl: '34px !important',
 	_placeholder: {
-		color: "fg.subtle",
-		fontSize: "sm",
-		fontWeight: "light",
-	}
+		color: 'fg.subtle',
+		fontSize: 'sm',
+		fontWeight: 'light',
+	},
 }
 
 const inputLabelStyle = {
-	fontWeight: "semibold",
-	fontSize: { base: '12px', lg: '14px' }
+	fontWeight: 'semibold',
+	fontSize: {base: '12px', lg: '14px'},
 }
 
 const checkLabelStyle = {
-	fontSize: {base: '12px', lg: '14px'}
+	fontSize: {base: '12px', lg: '14px'},
 }
 
 const Profile = () => {
 	return (
 		<ContentLayout>
-			<Flex direction={{ base: "column", md: "row" }} gap="4" justify="space-between">
+			<Flex
+				direction={{base: 'column', md: 'row'}}
+				gap="4"
+				justify="space-between"
+			>
 				<Flex align="center" gap="2">
 					<NavLink to="/">
-						<Icon as={ChevronLeft} boxSize={6} color="black" _hover={{ color: "gray.400" }} />
+						<Icon
+							as={ChevronLeft}
+							boxSize={6}
+							color="black"
+							_hover={{color: 'gray.400'}}
+						/>
 					</NavLink>
 					<PageHeading>Профиль и настройки</PageHeading>
 				</Flex>
 			</Flex>
 
-			<Flex direction={{ base: "column", md: "row" }} gap="24px">
+			<Flex direction={{base: 'column', md: 'row'}} gap="24px">
 				<Box {...boxStyles}>
 					<VStack gap="4" align="stretch">
-						<Heading size={{ base: "md", lg: 'lg' }}>Редактируйте ваши данные</Heading>
+						<Heading size={{base: 'md', lg: 'lg'}}>
+							Редактируйте ваши данные
+						</Heading>
 
 						<Field.Root>
 							<Field.Label {...inputLabelStyle}>ФИО</Field.Label>
@@ -95,35 +118,49 @@ const Profile = () => {
 				<Box {...boxStyles}>
 					<VStack gap="4" align="flex-start">
 						<Flex direction="column" gap="4" w="full">
-							<Heading size="sm" mb="1.5">Отображение цен в каталоге</Heading>
+							<Heading size="sm" mb="1.5">
+								Отображение цен в каталоге
+							</Heading>
 							<Checkbox.Root>
 								<Checkbox.HiddenInput />
 								<Checkbox.Control />
-								<Checkbox.Label {...checkLabelStyle}>Отображать РРЦ и распродажи</Checkbox.Label>
+								<Checkbox.Label {...checkLabelStyle}>
+									Отображать РРЦ и распродажи
+								</Checkbox.Label>
 							</Checkbox.Root>
 							<Checkbox.Root checked>
 								<Checkbox.HiddenInput />
 								<Checkbox.Control />
-								<Checkbox.Label {...checkLabelStyle}>Отображать оптовую цену</Checkbox.Label>
+								<Checkbox.Label {...checkLabelStyle}>
+									Отображать оптовую цену
+								</Checkbox.Label>
 							</Checkbox.Root>
 							<Checkbox.Root>
 								<Checkbox.HiddenInput />
 								<Checkbox.Control />
-								<Checkbox.Label {...checkLabelStyle}>Цена еще одна</Checkbox.Label>
+								<Checkbox.Label {...checkLabelStyle}>
+									Цена еще одна
+								</Checkbox.Label>
 							</Checkbox.Root>
 						</Flex>
 
 						<Flex direction="column" gap="4" w="full">
-							<Heading size="sm" mb="1.5">Настройка уведомлений</Heading>
+							<Heading size="sm" mb="1.5">
+								Настройка уведомлений
+							</Heading>
 							<Checkbox.Root>
 								<Checkbox.HiddenInput />
 								<Checkbox.Control />
-								<Checkbox.Label {...checkLabelStyle}>Отправлять уведобления на почту</Checkbox.Label>
+								<Checkbox.Label {...checkLabelStyle}>
+									Отправлять уведобления на почту
+								</Checkbox.Label>
 							</Checkbox.Root>
 							<Checkbox.Root>
 								<Checkbox.HiddenInput />
 								<Checkbox.Control />
-								<Checkbox.Label {...checkLabelStyle}>Отправлять уведомления в ЛК</Checkbox.Label>
+								<Checkbox.Label {...checkLabelStyle}>
+									Отправлять уведомления в ЛК
+								</Checkbox.Label>
 							</Checkbox.Root>
 						</Flex>
 

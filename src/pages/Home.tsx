@@ -1,35 +1,57 @@
-import { ContentLayout } from "@/ui"
-import { Avatar, Flex, VStack, Text, Link, HStack, Icon, Box, Grid, GridItem, Card, Button, Heading } from "@chakra-ui/react"
-import { PageHeading } from "@/ui"
-import { PencilLine, Bell, FileDown, ChevronDown } from 'lucide-react'
-import { NavLink } from "react-router"
+import {
+	Avatar,
+	Box,
+	Button,
+	Card,
+	Flex,
+	Grid,
+	GridItem,
+	Heading,
+	HStack,
+	Icon,
+	Link,
+	Text,
+	VStack,
+} from '@chakra-ui/react'
+import {Bell, ChevronDown, FileDown, PencilLine} from 'lucide-react'
+import {NavLink} from 'react-router'
+import {ContentLayout, PageHeading} from '@/ui'
 
 const cardStyle = {
-	w: "full",
-	border: "none",
-	borderRadius: "6px",
+	w: 'full',
+	border: 'none',
+	borderRadius: '6px',
 	p: '4',
-	boxShadow: "0 0 1px 0 rgba(24, 24, 27, 0.30), 0 4px 8px 0 rgba(24, 24, 27, 0.10)"
+	boxShadow:
+		'0 0 1px 0 rgba(24, 24, 27, 0.30), 0 4px 8px 0 rgba(24, 24, 27, 0.10)',
 }
 
 const ordersAndProjects = [
-	{ count: 23, label: 'Не оформлены' },
-	{ count: 87, label: 'В резерве' },
-	{ count: 45, label: 'Подтвержден' },
-	{ count: 76, label: 'На сборке' },
-	{ count: 12, label: 'Доставка' },
-	{ count: 59, label: 'Отгружены' },
-];
+	{count: 23, label: 'Не оформлены'},
+	{count: 87, label: 'В резерве'},
+	{count: 45, label: 'Подтвержден'},
+	{count: 76, label: 'На сборке'},
+	{count: 12, label: 'Доставка'},
+	{count: 59, label: 'Отгружены'},
+]
 
 const Home = () => {
 	return (
 		<ContentLayout>
-			<Flex direction={{ base: "column", md: "row" }} gap="4" justify="space-between">
+			<Flex
+				direction={{base: 'column', md: 'row'}}
+				gap="4"
+				justify="space-between"
+			>
 				<PageHeading>Главная</PageHeading>
 			</Flex>
 
 			<VStack gap="6" align="stretch">
-				<Flex direction={{ base: "column", md: "row" }} align={{ base: "flex-start", md: "center" }} gap={{ base: "4", md: "2" }}>
+				<Flex
+					direction={{base: 'column', md: 'row'}}
+					align={{base: 'flex-start', md: 'center'}}
+					gap={{base: '4', md: '2'}}
+				>
 					<Avatar.Root variant="solid">
 						<Avatar.Fallback name="Пупкин Виталий Витальевич " />
 					</Avatar.Root>
@@ -37,13 +59,28 @@ const Home = () => {
 						<Text fontSize="lg" fontWeight="medium">
 							Пупкин Виталий Витальевич
 						</Text>
-						<Text color="gray.600" >
-							<Link color="inherit" href="tel:+79297654321">+7 929 765 43 21</Link>, <Link color="inherit" href="mailto:melissajones@example.com">melissajones@example.com</Link>, <Text color="inherit" as="span">Тула</Text>
+						<Text color="gray.600">
+							<Link color="inherit" href="tel:+79297654321">
+								+7 929 765 43 21
+							</Link>
+							,{' '}
+							<Link color="inherit" href="mailto:melissajones@example.com">
+								melissajones@example.com
+							</Link>
+							,{' '}
+							<Text color="inherit" as="span">
+								Тула
+							</Text>
 						</Text>
 					</VStack>
 					<HStack gap="4" align="center">
 						<NavLink to={`/contacts`}>
-							<Icon as={PencilLine} boxSize={6} color="black" _hover={{ color: "gray.400" }} />
+							<Icon
+								as={PencilLine}
+								boxSize={6}
+								color="black"
+								_hover={{color: 'gray.400'}}
+							/>
 						</NavLink>
 						<Box w="1px" h="5" background="gray.200" />
 						{/* Не понял, что именно делает этот элемент. Его нужно будет обернуть в зависимости от его предназначения */}
@@ -51,25 +88,47 @@ const Home = () => {
 					</HStack>
 				</Flex>
 
-				<Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={{ base: "4", lg: "6" }}>
-					<GridItem colStart={{ base: 1, lg: -2 }} colSpan={{ base: 1, md: 2, lg: 1 }}>
-						<Button variant="solid" float={{ lg: "right" }}>
+				<Grid
+					templateColumns={{
+						base: '1fr',
+						md: 'repeat(2, 1fr)',
+						lg: 'repeat(3, 1fr)',
+					}}
+					gap={{base: '4', lg: '6'}}
+				>
+					<GridItem
+						colStart={{base: 1, lg: -2}}
+						colSpan={{base: 1, md: 2, lg: 1}}
+					>
+						<Button variant="solid" float={{lg: 'right'}}>
 							<FileDown /> скачать прайс-лист <ChevronDown />
 						</Button>
 					</GridItem>
 
-					<GridItem rowStart={{ lg: 1 }}>
-						<Card.Root {...cardStyle} >
+					<GridItem rowStart={{lg: 1}}>
+						<Card.Root {...cardStyle}>
 							<Card.Body p="0" gap="4">
 								<Card.Title>Мой менеджер</Card.Title>
-								<Card.Description as="div" display="flex" alignItems="center" gap="2">
+								<Card.Description
+									as="div"
+									display="flex"
+									alignItems="center"
+									gap="2"
+								>
 									<Avatar.Root size="xl">
 										<Avatar.Fallback name="Бацанова Ольга" />
 										<Avatar.Image src="https://i.pravatar.cc/300" />
 									</Avatar.Root>
 									<VStack gap="0" align="stretch">
-										<Heading size="md" color="black">Бацанова Ольга</Heading>
-										<Link color="gray.600" href="mailto:melissajones@example.com">melissajones@example.com</Link>
+										<Heading size="md" color="black">
+											Бацанова Ольга
+										</Heading>
+										<Link
+											color="gray.600"
+											href="mailto:melissajones@example.com"
+										>
+											melissajones@example.com
+										</Link>
 									</VStack>
 								</Card.Description>
 							</Card.Body>
@@ -81,22 +140,37 @@ const Home = () => {
 						</Card.Root>
 					</GridItem>
 
-					<GridItem rowStart={{ lg: 1 }}>
-						<Card.Root {...cardStyle} >
+					<GridItem rowStart={{lg: 1}}>
+						<Card.Root {...cardStyle}>
 							<Card.Body p="0" gap="4">
 								<Card.Title>Мои юр.лица</Card.Title>
-								<Card.Description as="div" display="flex" alignItems="center" gap="2">
+								<Card.Description
+									as="div"
+									display="flex"
+									alignItems="center"
+									gap="2"
+								>
 									<Avatar.Root variant="solid" size="xl">
 										<Avatar.Fallback name="3" />
 									</Avatar.Root>
 									<VStack gap="0" align="stretch">
-										<Text color="gray.600">юр. лица зарегистрировано в ЛК </Text>
+										<Text color="gray.600">
+											юр. лица зарегистрировано в ЛК{' '}
+										</Text>
 									</VStack>
 								</Card.Description>
 							</Card.Body>
-							<Card.Footer flexDirection={{ base: "column", sm: "row" }} alignItems="flex-end" justifyContent="flex-end" mt="4" p="0">
+							<Card.Footer
+								flexDirection={{base: 'column', sm: 'row'}}
+								alignItems="flex-end"
+								justifyContent="flex-end"
+								mt="4"
+								p="0"
+							>
 								<NavLink to={`/companies`}>
-									<Button variant="outline" size="sm">Смотреть все</Button>
+									<Button variant="outline" size="sm">
+										Смотреть все
+									</Button>
 								</NavLink>
 								<Button size="sm">Добавить юр.лицо</Button>
 							</Card.Footer>
@@ -104,38 +178,26 @@ const Home = () => {
 					</GridItem>
 				</Grid>
 
-				<Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={{ base: "4", lg: "6" }}>
-					<GridItem {...cardStyle} display="flex" flexDirection="column" gap="4">
+				<Grid
+					templateColumns={{
+						base: '1fr',
+						md: 'repeat(2, 1fr)',
+						lg: 'repeat(3, 1fr)',
+					}}
+					gap={{base: '4', lg: '6'}}
+				>
+					<GridItem
+						{...cardStyle}
+						display="flex"
+						flexDirection="column"
+						gap="4"
+					>
 						<Heading size="lg">Мои заказы</Heading>
-						<Grid templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }} gap={{base: "2", md: "4"}}>
-							{ordersAndProjects.map(item => (
-								<GridItem key={item.label}>
-									<Card.Root {...cardStyle} h="full">
-										<Card.Body p="0" gap="2" >
-											<Avatar.Root variant="solid" size="sm">
-												<Text fontSize="xs">{item.count}</Text>
-											</Avatar.Root>
-											<Card.Description>{item.label}</Card.Description>
-										</Card.Body>
-									</Card.Root>
-								</GridItem>
-							))}
-						</Grid>
-						<Grid templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }} gap="2">
-							<GridItem>
-								<NavLink to={`/companies`}>
-									<Button w="full" variant="outline" size="sm">Смотреть все</Button>
-								</NavLink>
-							</GridItem>
-							<GridItem>
-								<Button size="sm" w="full">Создать заказ</Button>
-							</GridItem>
-						</Grid>
-					</GridItem>
-					<GridItem {...cardStyle} display="flex" flexDirection="column" gap="4">
-						<Heading size="lg">Мои проекты</Heading>
-						<Grid templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }} gap={{base: "2", md: "4"}}>
-							{ordersAndProjects.map(item => (
+						<Grid
+							templateColumns={{base: '1fr', sm: 'repeat(2, 1fr)'}}
+							gap={{base: '2', md: '4'}}
+						>
+							{ordersAndProjects.map((item) => (
 								<GridItem key={item.label}>
 									<Card.Root {...cardStyle} h="full">
 										<Card.Body p="0" gap="2">
@@ -148,20 +210,63 @@ const Home = () => {
 								</GridItem>
 							))}
 						</Grid>
-						<Grid templateColumns={{ base: "1fr", sm: "repeat(2, 1fr)" }} gap="2">
+						<Grid templateColumns={{base: '1fr', sm: 'repeat(2, 1fr)'}} gap="2">
 							<GridItem>
 								<NavLink to={`/companies`}>
-									<Button w="full" variant="outline" size="sm">Смотреть все</Button>
+									<Button w="full" variant="outline" size="sm">
+										Смотреть все
+									</Button>
 								</NavLink>
 							</GridItem>
 							<GridItem>
-								<Button size="sm" w="full">Создать проект</Button>
+								<Button size="sm" w="full">
+									Создать заказ
+								</Button>
+							</GridItem>
+						</Grid>
+					</GridItem>
+					<GridItem
+						{...cardStyle}
+						display="flex"
+						flexDirection="column"
+						gap="4"
+					>
+						<Heading size="lg">Мои проекты</Heading>
+						<Grid
+							templateColumns={{base: '1fr', sm: 'repeat(2, 1fr)'}}
+							gap={{base: '2', md: '4'}}
+						>
+							{ordersAndProjects.map((item) => (
+								<GridItem key={item.label}>
+									<Card.Root {...cardStyle} h="full">
+										<Card.Body p="0" gap="2">
+											<Avatar.Root variant="solid" size="sm">
+												<Text fontSize="xs">{item.count}</Text>
+											</Avatar.Root>
+											<Card.Description>{item.label}</Card.Description>
+										</Card.Body>
+									</Card.Root>
+								</GridItem>
+							))}
+						</Grid>
+						<Grid templateColumns={{base: '1fr', sm: 'repeat(2, 1fr)'}} gap="2">
+							<GridItem>
+								<NavLink to={`/companies`}>
+									<Button w="full" variant="outline" size="sm">
+										Смотреть все
+									</Button>
+								</NavLink>
+							</GridItem>
+							<GridItem>
+								<Button size="sm" w="full">
+									Создать проект
+								</Button>
 							</GridItem>
 						</Grid>
 					</GridItem>
 				</Grid>
 			</VStack>
-		</ContentLayout >
+		</ContentLayout>
 	)
 }
 

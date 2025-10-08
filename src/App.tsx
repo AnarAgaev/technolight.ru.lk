@@ -1,15 +1,15 @@
-import { lazy, Suspense } from "react"
-import { BrowserRouter, Routes, Route } from "react-router"
-import { Layout } from "./ui"
+import {lazy, Suspense} from 'react'
+import {BrowserRouter, Route, Routes} from 'react-router'
+import {Layout} from './ui'
 
-const Home = lazy(() => import("@/pages/Home"))
-const Projects = lazy(() => import("@/pages/Projects"))
-const Orders = lazy(() => import("@/pages/Orders"))
-const Profile = lazy(() => import("@/pages/Profile"))
-const Download = lazy(() => import("@/pages/Download"))
-const Companies = lazy(() => import("@/pages/Companies"))
-const Messages = lazy(() => import("@/pages/Messages"))
-const Contacts = lazy(() => import("@/pages/Contacts"))
+const Home = lazy(() => import('@/pages/Home'))
+const Projects = lazy(() => import('@/pages/Projects'))
+const Orders = lazy(() => import('@/pages/Orders'))
+const Profile = lazy(() => import('@/pages/Profile'))
+const Download = lazy(() => import('@/pages/Download'))
+const Companies = lazy(() => import('@/pages/Companies'))
+const Messages = lazy(() => import('@/pages/Messages'))
+const Contacts = lazy(() => import('@/pages/Contacts'))
 
 function App() {
 	const basename = import.meta.env.VITE_APP_BASENAME
