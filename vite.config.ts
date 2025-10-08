@@ -4,8 +4,14 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import { analyzer } from 'vite-bundle-analyzer'
 
 // https://vite.dev/config/
-export default defineConfig({
-	plugins: [
+export default defineConfig(({ mode }) => {
+
+	// читаем переменные окружения
+	const base = mode === 'production' ? '/technolight-ru-lk/' : '/'
+
+	return {
+		base,
+		plugins: [
 		react(),
 		tsconfigPaths(),
 		analyzer(),
@@ -23,4 +29,5 @@ export default defineConfig({
 			},
 		},
 	},
+	}
 })

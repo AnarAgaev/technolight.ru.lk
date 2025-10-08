@@ -12,9 +12,10 @@ const Messages = lazy(() => import("@/pages/Messages"))
 const Contacts = lazy(() => import("@/pages/Contacts"))
 
 function App() {
+	const basename = import.meta.env.VITE_APP_BASENAME
+
 	return (
-		<BrowserRouter>
-			{/* Suspense — показывает fallback, пока компонент грузится */}
+		<BrowserRouter basename={basename}>
 			<Suspense fallback={<div>Загружаем страницу...</div>}>
 				<Routes>
 					<Route element={<Layout />}>
