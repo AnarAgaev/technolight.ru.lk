@@ -2,6 +2,7 @@ import {
 	Badge,
 	Box,
 	Button,
+	Card,
 	Field,
 	Flex,
 	Grid,
@@ -32,14 +33,6 @@ import {
 import {NavLink} from 'react-router'
 import {formatDate, formatPrice, getTimeAgo} from '@/helpers'
 import {ContentLayout, CustomSelect, PageHeading} from '@/ui'
-
-const cardStyle = {
-	w: 'full',
-	border: 'none',
-	borderRadius: '6px',
-	boxShadow:
-		'0 0 1px 0 rgba(24, 24, 27, 0.30), 0 4px 8px 0 rgba(24, 24, 27, 0.10)',
-}
 
 const selectors = [
 	{
@@ -405,43 +398,40 @@ const Orders = () => {
 				</Flex>
 
 				{/* Селекты */}
-				<VStack
-					gap="1.5"
-					align="stretch"
-					p={{base: '3', md: '4'}}
-					{...cardStyle}
-				>
-					<Grid
-						gap={{base: '3', xl: '6'}}
-						templateColumns={{
-							base: '1fr',
-							md: 'repeat(2, 1fr)',
-							lg: 'repeat(4, 1fr)',
-						}}
-						alignItems="end"
-					>
-						{selectors.map((selector) => (
-							<GridItem key={selector.id}>
-								<Heading
-									fontSize="sm"
-									fontWeight={600}
-									mb="1.5"
-									lineHeight="20px"
-								>
-									{selector.label}
-								</Heading>
-								<CustomSelect
-									label={selector.placeholder}
-									optionsList={selector.options}
-									isMultiple={false}
-								/>
+				<Card.Root>
+					<Card.Body p={{base: '3', md: '4'}}>
+						<Grid
+							gap={{base: '3', xl: '6'}}
+							templateColumns={{
+								base: '1fr',
+								md: 'repeat(2, 1fr)',
+								lg: 'repeat(4, 1fr)',
+							}}
+							alignItems="end"
+						>
+							{selectors.map((selector) => (
+								<GridItem key={selector.id}>
+									<Heading
+										fontSize="sm"
+										fontWeight={600}
+										mb="1.5"
+										lineHeight="20px"
+									>
+										{selector.label}
+									</Heading>
+									<CustomSelect
+										label={selector.placeholder}
+										optionsList={selector.options}
+										isMultiple={false}
+									/>
+								</GridItem>
+							))}
+							<GridItem>
+								<Button w="full">Создать заказ</Button>
 							</GridItem>
-						))}
-						<GridItem>
-							<Button w="full">Создать заказ</Button>
-						</GridItem>
-					</Grid>
-				</VStack>
+						</Grid>
+					</Card.Body>
+				</Card.Root>
 
 				{/* Сообщение - нет заказов */}
 				<Heading size="sm" maxW="400px" margin="0 auto" textAlign="center">
@@ -451,67 +441,71 @@ const Orders = () => {
 				</Heading>
 
 				{/* Комментарий к заказу */}
-				<Box {...cardStyle} p="4">
-					{/* Для отображения ошибки, добавляем аттрибут invalid в Field.Root */}
-					<Field.Root gap={1.5}>
-						<Field.Label fontSize="sm" fontWeight={600}>
-							Комментарий
-						</Field.Label>
-						<Textarea
-							autoresize
-							variant="outline"
-							placeholder="Напишите комментарий к заказу"
-							minH={{base: '100px', lg: '62px'}}
-						/>
-						<Field.ErrorText>Field is required</Field.ErrorText>
-					</Field.Root>
-				</Box>
+				<Card.Root>
+					<Card.Body p="4">
+						{/* Для отображения ошибки, добавляем аттрибут invalid в Field.Root */}
+						<Field.Root gap={1.5}>
+							<Field.Label fontSize="sm" fontWeight={600}>
+								Комментарий
+							</Field.Label>
+							<Textarea
+								autoresize
+								variant="outline"
+								placeholder="Напишите комментарий к заказу"
+								minH={{base: '100px', lg: '62px'}}
+							/>
+							<Field.ErrorText>Field is required</Field.ErrorText>
+						</Field.Root>
+					</Card.Body>
+				</Card.Root>
 
 				{/* Добавляем новый заказ */}
-				<VStack {...cardStyle} p="4" gap="40px">
-					<Grid
-						w="full"
-						gap={{base: '3', xl: '6'}}
-						templateColumns={{
-							base: '1fr',
-							sm: 'repeat(2, 1fr)',
-							lg: 'repeat(4, 1fr)',
-						}}
-					>
-						<GridItem>
-							<Field.Root>
-								<Field.Label fontSize="sm" fontWeight={600} lineHeight="20px">
-									Поиск по артикулу
-								</Field.Label>
-								<InputGroup endElement={<Search />}>
-									<Input placeholder="Введите артикул" />
-								</InputGroup>
-							</Field.Root>
-						</GridItem>
-					</Grid>
+				<Card.Root>
+					<Card.Body p="4" gap="40px">
+						<Grid
+							w="full"
+							gap={{base: '3', xl: '6'}}
+							templateColumns={{
+								base: '1fr',
+								sm: 'repeat(2, 1fr)',
+								lg: 'repeat(4, 1fr)',
+							}}
+						>
+							<GridItem>
+								<Field.Root>
+									<Field.Label fontSize="sm" fontWeight={600} lineHeight="20px">
+										Поиск по артикулу
+									</Field.Label>
+									<InputGroup endElement={<Search />}>
+										<Input placeholder="Введите артикул" />
+									</InputGroup>
+								</Field.Root>
+							</GridItem>
+						</Grid>
 
-					<Heading size="sm" maxW="400px" margin="0 auto" textAlign="center">
-						Добавьте товар в заказ удобным для вас способом
-					</Heading>
+						<Heading size="sm" maxW="400px" margin="0 auto" textAlign="center">
+							Добавьте товар в заказ удобным для вас способом
+						</Heading>
 
-					<Grid
-						w="full"
-						gap={{base: '3', xl: '6'}}
-						templateColumns={{
-							base: '1fr',
-							sm: 'repeat(2, 1fr)',
-							lg: 'repeat(4, 1fr)',
-						}}
-					>
-						{['По артикулу', 'Из каталога', 'Из списка', 'Из файла'].map(
-							(item) => (
-								<GridItem key={item}>
-									<Button w="full">{item}</Button>
-								</GridItem>
-							),
-						)}
-					</Grid>
-				</VStack>
+						<Grid
+							w="full"
+							gap={{base: '3', xl: '6'}}
+							templateColumns={{
+								base: '1fr',
+								sm: 'repeat(2, 1fr)',
+								lg: 'repeat(4, 1fr)',
+							}}
+						>
+							{['По артикулу', 'Из каталога', 'Из списка', 'Из файла'].map(
+								(item) => (
+									<GridItem key={item}>
+										<Button w="full">{item}</Button>
+									</GridItem>
+								),
+							)}
+						</Grid>
+					</Card.Body>
+				</Card.Root>
 
 				{/* Номер заказа и контроллеры */}
 				<Flex
@@ -686,141 +680,161 @@ const Orders = () => {
 				</Table.ScrollArea>
 
 				{/* Список заказов */}
-				<VStack gap="4" align="stretch" {...cardStyle} overflow="hidden">
-					<VStack gap="1.5" align="stretch" p={{base: '3', md: '4'}} w="full">
-						<Heading fontSize="sm" fontWeight={600} lineHeight="20px">
-							Фильтры
-						</Heading>
-						<Grid
-							gap={{base: '3', xl: '6'}}
-							templateColumns={{
-								base: '1fr',
-								md: 'repeat(2, 1fr)',
-								lg: 'repeat(4, 1fr)',
-							}}
-						>
-							{filters.map((filter) => (
-								<GridItem key={filter.id}>
-									<CustomSelect
-										label={filter.placeholder}
-										optionsList={filter.options}
-										isMultiple={true}
-									/>
-								</GridItem>
-							))}
-
-							<GridItem>
-								<Field.Root>
-									<InputGroup endElement={<Search height="20px" />}>
-										<Input truncate h="9" placeholder="Поиск" />
-									</InputGroup>
-								</Field.Root>
-							</GridItem>
-
-							<GridItem>
-								<Button w="full" variant="outline" position="relative">
-									<Text as="div" w="full">
-										Сбросить фильтры
-									</Text>
-									<X />
-								</Button>
-							</GridItem>
-						</Grid>
-					</VStack>
-					<Table.ScrollArea>
-						<Table.Root
-							size="sm"
-							borderTopWidth="1px"
-							minW="900px"
-							background="transparent"
-						>
-							<Table.Header>
-								<Table.Row background="transparent">
-									<Table.ColumnHeader
-										pl="4"
-										fontWeight="semibold"
-										bgColor="gray.100"
-									>
-										Номер заявки
-									</Table.ColumnHeader>
-									<Table.ColumnHeader fontWeight="semibold" bgColor="gray.100">
-										Номер заказа
-									</Table.ColumnHeader>
-									<Table.ColumnHeader fontWeight="semibold" bgColor="gray.100">
-										Статус заказа
-									</Table.ColumnHeader>
-									<Table.ColumnHeader fontWeight="semibold" bgColor="gray.100">
-										Дата отправки в 1С
-									</Table.ColumnHeader>
-									<Table.ColumnHeader fontWeight="semibold" bgColor="gray.100">
-										Контрагент
-									</Table.ColumnHeader>
-									<Table.ColumnHeader fontWeight="semibold" bgColor="gray.100">
-										Сумма заказа
-									</Table.ColumnHeader>
-									<Table.ColumnHeader fontWeight="semibold" bgColor="gray.100">
-										Всего товара
-									</Table.ColumnHeader>
-									<Table.ColumnHeader
-										pr="4"
-										fontWeight="semibold"
-										bgColor="gray.100"
-										textAlign="right"
-									>
-										Действие
-									</Table.ColumnHeader>
-								</Table.Row>
-							</Table.Header>
-
-							<Table.Body fontSize="sm">
-								{orders.map((order) => (
-									<Table.Row key={order.id} background="transparent">
-										<Table.Cell pl="4">{order.requestNumber}</Table.Cell>
-										<Table.Cell>{order.orderNumber}</Table.Cell>
-										<Table.Cell>
-											<Badge
-												fontWeight="300"
-												variant="solid"
-												colorPalette={
-													order.status.value === 'CANCELED'
-														? 'red'
-														: order.status.value === 'SHIPPED'
-															? 'green'
-															: 'gray'
-												}
-											>
-												{order.status.label}
-											</Badge>
-										</Table.Cell>
-										<Table.Cell>
-											{formatDate(order.pushDate) ? (
-												<VStack gap="0" align="stretch">
-													<Text>{formatDate(order.pushDate)}</Text>
-													<Text color="gray.600" fontSize="10px">
-														{getTimeAgo(order.pushDate)}
-													</Text>
-												</VStack>
-											) : null}
-										</Table.Cell>
-										<Table.Cell>{order.company}</Table.Cell>
-										<Table.Cell>{formatPrice(order.price)} ₽</Table.Cell>
-										<Table.Cell>{order.amount} шт.</Table.Cell>
-										<Table.Cell pr="4">
-											<HStack gap="2" justify="flex-end">
-												<Button variant="outline" size="xs" aspectRatio="1">
-													<RefreshCcw />
-												</Button>
-												<Button variant="outline" size="xs" aspectRatio="1">
-													<Trash2 />
-												</Button>
-											</HStack>
-										</Table.Cell>
-									</Table.Row>
+				<Card.Root>
+					<Card.Body gap="4" overflow="hidden" p="0">
+						<VStack gap="1.5" align="stretch" p={{base: '3', md: '4'}} w="full">
+							<Heading fontSize="sm" fontWeight={600} lineHeight="20px">
+								Фильтры
+							</Heading>
+							<Grid
+								gap={{base: '3', xl: '6'}}
+								templateColumns={{
+									base: '1fr',
+									md: 'repeat(2, 1fr)',
+									lg: 'repeat(4, 1fr)',
+								}}
+							>
+								{filters.map((filter) => (
+									<GridItem key={filter.id}>
+										<CustomSelect
+											label={filter.placeholder}
+											optionsList={filter.options}
+											isMultiple={true}
+										/>
+									</GridItem>
 								))}
-							</Table.Body>
-						</Table.Root>
-					</Table.ScrollArea>
-				</VStack>
+
+								<GridItem>
+									<Field.Root>
+										<InputGroup endElement={<Search height="20px" />}>
+											<Input truncate h="9" placeholder="Поиск" />
+										</InputGroup>
+									</Field.Root>
+								</GridItem>
+
+								<GridItem>
+									<Button w="full" variant="outline" position="relative">
+										<Text as="div" w="full">
+											Сбросить фильтры
+										</Text>
+										<X />
+									</Button>
+								</GridItem>
+							</Grid>
+						</VStack>
+						<Table.ScrollArea>
+							<Table.Root
+								size="sm"
+								borderTopWidth="1px"
+								minW="900px"
+								background="transparent"
+							>
+								<Table.Header>
+									<Table.Row background="transparent">
+										<Table.ColumnHeader
+											pl="4"
+											fontWeight="semibold"
+											bgColor="gray.100"
+										>
+											Номер заявки
+										</Table.ColumnHeader>
+										<Table.ColumnHeader
+											fontWeight="semibold"
+											bgColor="gray.100"
+										>
+											Номер заказа
+										</Table.ColumnHeader>
+										<Table.ColumnHeader
+											fontWeight="semibold"
+											bgColor="gray.100"
+										>
+											Статус заказа
+										</Table.ColumnHeader>
+										<Table.ColumnHeader
+											fontWeight="semibold"
+											bgColor="gray.100"
+										>
+											Дата отправки в 1С
+										</Table.ColumnHeader>
+										<Table.ColumnHeader
+											fontWeight="semibold"
+											bgColor="gray.100"
+										>
+											Контрагент
+										</Table.ColumnHeader>
+										<Table.ColumnHeader
+											fontWeight="semibold"
+											bgColor="gray.100"
+										>
+											Сумма заказа
+										</Table.ColumnHeader>
+										<Table.ColumnHeader
+											fontWeight="semibold"
+											bgColor="gray.100"
+										>
+											Всего товара
+										</Table.ColumnHeader>
+										<Table.ColumnHeader
+											pr="4"
+											fontWeight="semibold"
+											bgColor="gray.100"
+											textAlign="right"
+										>
+											Действие
+										</Table.ColumnHeader>
+									</Table.Row>
+								</Table.Header>
+
+								<Table.Body fontSize="sm">
+									{orders.map((order) => (
+										<Table.Row key={order.id} background="transparent">
+											<Table.Cell pl="4">{order.requestNumber}</Table.Cell>
+											<Table.Cell>{order.orderNumber}</Table.Cell>
+											<Table.Cell>
+												<Badge
+													fontWeight="300"
+													variant="solid"
+													colorPalette={
+														order.status.value === 'CANCELED'
+															? 'red'
+															: order.status.value === 'SHIPPED'
+																? 'green'
+																: 'gray'
+													}
+												>
+													{order.status.label}
+												</Badge>
+											</Table.Cell>
+											<Table.Cell>
+												{formatDate(order.pushDate) ? (
+													<VStack gap="0" align="stretch">
+														<Text>{formatDate(order.pushDate)}</Text>
+														<Text color="gray.600" fontSize="10px">
+															{getTimeAgo(order.pushDate)}
+														</Text>
+													</VStack>
+												) : null}
+											</Table.Cell>
+											<Table.Cell>{order.company}</Table.Cell>
+											<Table.Cell>{formatPrice(order.price)} ₽</Table.Cell>
+											<Table.Cell>{order.amount} шт.</Table.Cell>
+											<Table.Cell pr="4">
+												<HStack gap="2" justify="flex-end">
+													<Button variant="outline" size="xs" aspectRatio="1">
+														<RefreshCcw />
+													</Button>
+													<Button variant="outline" size="xs" aspectRatio="1">
+														<Trash2 />
+													</Button>
+												</HStack>
+											</Table.Cell>
+										</Table.Row>
+									))}
+								</Table.Body>
+							</Table.Root>
+						</Table.ScrollArea>
+					</Card.Body>
+				</Card.Root>
 
 				{/* Итого */}
 				<VStack

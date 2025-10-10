@@ -7,6 +7,8 @@ export const Layout = () => (
 		templateColumns={{base: '1fr', md: '70px 1fr', xl: '360px 1fr'}}
 		minH="100vh"
 		position="relative"
+		background="gray.50"
+		backgroundColor="bg.subtle"
 	>
 		{/* Sidebar */}
 		<GridItem
@@ -32,7 +34,7 @@ export const Layout = () => (
 			pb={{base: '46px', md: 0}} // отступ, чтобы контент не залез под фиксированный footer
 			overflowY="auto"
 		>
-			<Container as="section">
+			<Container as="section" maxW="initial">
 				<Outlet />
 			</Container>
 		</GridItem>

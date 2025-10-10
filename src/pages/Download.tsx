@@ -120,14 +120,6 @@ const videoInstructionsList = [
 	},
 ]
 
-const cardStyle = {
-	w: 'full',
-	border: 'none',
-	borderRadius: '6px',
-	boxShadow:
-		'0 0 1px 0 rgba(24, 24, 27, 0.30), 0 4px 8px 0 rgba(24, 24, 27, 0.10)',
-}
-
 const catalogsList = [
 	{
 		id: 1,
@@ -264,34 +256,31 @@ const Download = () => {
 			</Flex>
 
 			<VStack align="stretch" gap="6">
-				<VStack
-					gap="1.5"
-					align="stretch"
-					p={{base: '3', md: '4'}}
-					{...cardStyle}
-				>
-					<Heading size={{base: 'sm', md: 'md'}}>
-						Выберите нужные параметры
-					</Heading>
-					<Grid
-						gap={{base: '3', md: '6'}}
-						templateColumns={{
-							base: '1fr',
-							md: 'repeat(2, 1fr)',
-							lg: 'repeat(3, 1fr)',
-						}}
-					>
-						{selectors.map((selector) => (
-							<GridItem key={selector.id}>
-								<CustomSelect
-									label={selector.label}
-									optionsList={selector.options}
-									isMultiple
-								/>
-							</GridItem>
-						))}
-					</Grid>
-				</VStack>
+				<Card.Root variant="elevated">
+					<Card.Body alignItems="stretch" gap="1.5" p={{base: '3', md: '4'}}>
+						<Heading size={{base: 'sm', md: 'md'}}>
+							Выберите нужные параметры
+						</Heading>
+						<Grid
+							gap={{base: '3', md: '6'}}
+							templateColumns={{
+								base: '1fr',
+								md: 'repeat(2, 1fr)',
+								lg: 'repeat(3, 1fr)',
+							}}
+						>
+							{selectors.map((selector) => (
+								<GridItem key={selector.id}>
+									<CustomSelect
+										label={selector.label}
+										optionsList={selector.options}
+										isMultiple
+									/>
+								</GridItem>
+							))}
+						</Grid>
+					</Card.Body>
+				</Card.Root>
 
 				<Grid
 					gap={{base: '3', md: '6'}}
@@ -304,9 +293,9 @@ const Download = () => {
 					{selectCardsList.map((card) => (
 						<GridItem key={card.id}>
 							<Card.Root
-								{...cardStyle}
-								background={card.selected ? 'gray.100' : 'transparent'}
+								variant="elevated"
 								cursor="pointer"
+								background={card.selected ? 'gray.100' : 'transparent'}
 								pointerEvents={card.selected ? 'none' : 'auto'}
 								_hover={{background: 'gray.100'}}
 							>
